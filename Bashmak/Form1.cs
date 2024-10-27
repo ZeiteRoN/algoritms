@@ -1,18 +1,9 @@
 ﻿using aloritms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
+
 
 namespace algoritms
 {
@@ -20,7 +11,7 @@ namespace algoritms
     {
         public delegate void SortMethod();
         protected SortMethod sort_method;
-
+        public string action = null;
 
         public Form1()
         {
@@ -64,14 +55,20 @@ namespace algoritms
 
         public void printSortedNums(MyArray numbers, int count)
         {
+            string btnTag = null;
+            action = "printing";
+
             foreach (Control control in sortType.Controls)
             {
-                if (control is System.Windows.Forms.RadioButton radioButton && radioButton.Checked)
+                if (control is RadioButton radioButton && radioButton.Checked)
                 {
-                    setSortType(radioButton.Tag.ToString(), numbers);
+                    setSortType(radioButton.Tag.ToString(), numbers, action);
+                    btnTag = radioButton.Tag.ToString();
                 }
             }
             
+            if(btnTag != "merge")
+            {
                 for (int i = 0; i < count; i++)
                 {
                     richTextBox1.Text += $"{numbers.numbers[i]}\n";
@@ -81,15 +78,7 @@ namespace algoritms
                 {
                     richTextBox2.Text += $"{numbers.numbers[i]}\n";
                 }
-        }
-
-        public long MeasureSortTime(MyArray array)
-        {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            array.bubleSort();
-            stopwatch.Stop();
-            return stopwatch.ElapsedTicks;
+            }
         }
 
         public virtual void research_Click_1(object sender, EventArgs e)
@@ -104,18 +93,19 @@ namespace algoritms
 
         public void drawSeries(string method, Series series)
         {
+            action = "draw";
             for (int i = 10; i <= 5000; i += 500)
             {
                 var array = new MyArray(ArrayType.Descending, i);
                 Stopwatch sw = new Stopwatch();
-                setSortType(method, array);
+                setSortType(method, array, action);
                 sw.Start();
                 sort_method();
                 sw.Stop();
                 series.Points.AddXY(i, sw.Elapsed.TotalMilliseconds);
             }
         }
-        public virtual void setSortType(string sortType, MyArray array)
+        public virtual void setSortType(string sortType, MyArray array, string action)
         {
             if (sortType == "bubble") sort_method = array.bubleSort;
             else if (sortType == "insertion") sort_method = array.insertionSort;

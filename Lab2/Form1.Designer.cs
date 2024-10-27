@@ -39,7 +39,7 @@
             this.bubbleSort.Tag = "merge";
             this.bubbleSort.Text = "Merge";
             // 
-            // sortButton
+            // research
             // 
             // 
             // Form1
