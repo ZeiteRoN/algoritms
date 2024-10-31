@@ -57,7 +57,7 @@ namespace aloritms
                 }
             }
         }
-        public void insertionSort()
+        public virtual void insertionSort()
         {
             for (int i = 1; i < numbers.Length; i++)
             {

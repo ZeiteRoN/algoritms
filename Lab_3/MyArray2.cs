@@ -1,15 +1,17 @@
-﻿using aloritms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using algoritms;
+using aloritms;
 
-namespace Lab2
+namespace Lab_3
 {
-    public class MyArray1 : MyArray
+    public class MyArray2: MyArray
     {
-        public MyArray1(MyArray array, ArrayType arrayType): base (arrayType, array.count)
+        public int inversions;
+        public MyArray2(MyArray array, ArrayType arrayType) : base(arrayType, array.count)
         {
             count = array.count;
             numbers = array.numbers;
@@ -43,6 +45,7 @@ namespace Lab2
                 else
                 {
                     mergedArray[k++] = array2[j++];
+                    inversions += array1.Length - i;
                 }
             }
             while (i < array1.Length)
@@ -54,6 +57,23 @@ namespace Lab2
                 mergedArray[k++] = array2[j++];
             }
             return mergedArray;
+        }
+
+        public void bruteForce()
+        {
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    if (numbers[j] < numbers[j - 1])
+                    {
+                        int temp = numbers[j];
+                        numbers[j] = numbers[j - 1];
+                        numbers[j - 1] = temp;
+                        inversions++;
+                    }
+                }
+            }
         }
     }
 }

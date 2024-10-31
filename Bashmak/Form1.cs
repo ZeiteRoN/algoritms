@@ -53,7 +53,7 @@ namespace algoritms
 
         }
 
-        public void printSortedNums(MyArray numbers, int count)
+        public virtual void printSortedNums(MyArray numbers, int count)
         {
             string btnTag = null;
             array = new MyArray(numbers.arrayType, count);
@@ -66,16 +66,22 @@ namespace algoritms
                     btnTag = radioButton.Tag.ToString();
                 }
             }
-            
-            for (int i = 0; i < count; i++)
+
+            printArray();
+        }
+
+        public void printToTextBox(int[] numbers, RichTextBox textBox)
+        {
+            for (int i = 0; i < numbers.Length; i++)
             {
-                richTextBox1.Text += $"{array.numbers[i]}\n";
+                textBox.Text += $"{numbers[i]}\n";
             }
+        }
+        public virtual void printArray()
+        {
+            printToTextBox(array.numbers, richTextBox1);
             sort_method();
-            for (int i = 0; i < count; i++)
-            {
-                richTextBox2.Text += $"{array.numbers[i]}\n";
-            }
+            printToTextBox(array.numbers, richTextBox2);
         }
 
         public virtual void research_Click_1(object sender, EventArgs e)
