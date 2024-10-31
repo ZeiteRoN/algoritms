@@ -33,21 +33,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
+            // textBox1
+            // 
+            this.textBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            // 
             // bubbleSort
             // 
-            this.bubbleSort.Size = new System.Drawing.Size(55, 17);
+            this.bubbleSort.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.bubbleSort.Size = new System.Drawing.Size(67, 20);
             this.bubbleSort.Tag = "merge";
             this.bubbleSort.Text = "Merge";
             // 
-            // research
+            // richTextBox1
             // 
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.richTextBox1.Size = new System.Drawing.Size(105, 229);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.richTextBox2.Size = new System.Drawing.Size(104, 229);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.arrayType.ResumeLayout(false);
             this.arrayType.PerformLayout();
             this.sortType.ResumeLayout(false);
