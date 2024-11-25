@@ -94,7 +94,7 @@ namespace algoritms
             drawSeries(insertionSort.Tag.ToString(), chart1.Series[1]);
         }
 
-        public void drawSeries(string method, Series series)
+        public virtual void drawSeries(string method, Series series)
         {
             for (int i = 10; i <= 5000; i += 500)
             {
